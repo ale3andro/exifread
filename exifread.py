@@ -9,6 +9,7 @@ filename = "IMG_0625.JPG"
 directory_name = "alec"
 no_exif_directory_name = "no_exif"
 png_directory_name = "png"
+
 if not os.path.exists(directory_name):
     os.makedirs(directory_name)
 if not os.path.exists(no_exif_directory_name):
@@ -33,12 +34,16 @@ for item in all_files:
             #print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
             date_taken = exif_dict[ifd][tag][0:10]
             new_date = date_taken.replace(":","-")
-            #print new_date
-            shutil.copyfile(item, directory_name+'/'+new_date+'__'+item)
-            #shutil.copyfile(item, directory_name+'/'+item+'__'+new_date+".JPG")
+            month_folder_name = new_date[:7]
+            os.chdir(directory_name)
+            if not os.path.exists(month_folder_name):
+                os.makedirs(month_folder_name)
+            os.chdir('..')
+            shutil.move(item, directory_name+'/'+month_folder_name+'/'+new_date+'__'+item)
     if (not isFound):
         print "Δεν βρέθηκε tag στο αρχείο: " + item
-	shutil.move(item, no_exif_directory_name)
+        shutil.move(item, no_exif_directory_name)
     else:
         files_counter+=1
+
 print str(files_counter) + " copied and renamed"
