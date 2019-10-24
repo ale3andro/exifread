@@ -8,10 +8,17 @@ import piexif, shutil,os, glob
 filename = "IMG_0625.JPG"
 directory_name = "alec"
 no_exif_directory_name = "no_exif"
+png_directory_name = "png"
 if not os.path.exists(directory_name):
     os.makedirs(directory_name)
 if not os.path.exists(no_exif_directory_name):
     os.makedirs(no_exif_directory_name)
+if not os.path.exists(png_directory_name):
+    os.makedirs(png_directory_name)
+
+all_files = glob.glob("*.JPG")
+for item in all_files:
+    shutil.move(item, png_directory_name)
 
 all_files = glob.glob("*.JPG")
 files_counter=0
