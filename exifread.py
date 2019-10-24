@@ -16,7 +16,7 @@ if not os.path.exists(no_exif_directory_name):
 if not os.path.exists(png_directory_name):
     os.makedirs(png_directory_name)
 
-all_files = glob.glob("*.JPG")
+all_files = glob.glob("*.PNG")
 for item in all_files:
     shutil.move(item, png_directory_name)
 
