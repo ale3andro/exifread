@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# revision 02 - 13/05/2018
+# revision 03 - 28/08/2020
+# Python3 script
 
 import piexif, shutil,os, glob
 
