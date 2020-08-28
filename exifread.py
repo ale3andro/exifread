@@ -32,7 +32,7 @@ for item in all_files:
             isFound=True
             #print item
             #print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
-            date_taken = exif_dict[ifd][tag][0:10]
+            date_taken = exif_dict[ifd][tag][0:10].decode("utf-8")
             new_date = date_taken.replace(":","-")
             month_folder_name = new_date[:7]
             os.chdir(directory_name)
@@ -41,9 +41,9 @@ for item in all_files:
             os.chdir('..')
             shutil.move(item, directory_name+'/'+month_folder_name+'/'+new_date+'__'+item)
     if (not isFound):
-        print "Δεν βρέθηκε tag στο αρχείο: " + item
+        print("Δεν βρέθηκε tag στο αρχείο: " + item)
         shutil.move(item, no_exif_directory_name)
     else:
         files_counter+=1
 
-print str(files_counter) + " copied and renamed"
+print(str(files_counter) + " copied and renamed")
