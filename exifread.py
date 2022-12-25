@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# revision 03 - 28/08/2020
+# revision 04 - 25/12/2022
 # Python3 script
 
 import piexif, shutil,os, glob
@@ -25,6 +25,7 @@ for item in all_files:
 all_files = glob.glob("*.JPG")
 files_counter=0
 for item in all_files:
+    print("Processing:", item)
     exif_dict = piexif.load(item)
     ifd="0th"
     isFound=False
